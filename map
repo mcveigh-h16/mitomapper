@@ -1,0 +1,4 @@
+ID,Taxon,R1,R2,Assembly
+abc,Escherichia coli,,,abc.fasta
+def,,,,def.fasta
+ghi,,,,ghi.fasta
