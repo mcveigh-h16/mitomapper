@@ -4,7 +4,7 @@ Split a multi-sequence FASTA file into one `.fasta` file per sequence and genera
 
 ## Setup on Windows (PowerShell)
 
-The project already has a Python 3.13.1 virtual environment in `.venv`. Reuse it:
+The project includes a snapshot of its Windows Python 3.13.1 virtual environment in `.venv`. Virtual environments contain machine-specific paths; recreate it using the setup command below when using a different machine. On the original machine, reuse it:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
@@ -26,7 +26,7 @@ Activation is optional. You can invoke the environment's interpreter directly:
 
 ## Setup on Linux
 
-From the project directory, create a virtual environment using Python 3.10 or newer:
+The included Windows environment cannot run on Linux. From the project directory, create a local virtual environment using Python 3.10 or newer:
 
 ```sh
 python3 -m venv .venv
