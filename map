@@ -1,4 +1,4 @@
-ID,Taxon,R1,R2,Assembly
-abc,Escherichia coli,,,abc.fasta
-def,,,,def.fasta
-ghi,,,,ghi.fasta
+ID,Taxon,R1,R2,Assembly,Topology
+abc,Xiphophorus variatus,,,abc.fasta,circular
+def,Xiphophorus variatus,,,def.fasta,circular
+ghi,Xiphophorus variatus,,,ghi.fasta,circular

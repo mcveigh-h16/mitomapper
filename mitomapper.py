@@ -44,7 +44,11 @@ def read_records(input_path: Path) -> list[Record]:
                 identifier = tokens[0]
                 validate_identifier(identifier)
                 organism = re.search(r"\[orgn=([^\]]*)\]", header)
-                records.append(Record(identifier, organism.group(1) if organism else "", [line]))
+                if organism is None or not organism.group(1).strip():
+                    raise ValueError(
+                        f"Missing organism name in [orgn=...] for ID {identifier!r} at line {line_number}"
+                    )
+                records.append(Record(identifier, organism.group(1), [line]))
                 has_sequence = False
             elif records:
                 records[-1].lines.append(line)
@@ -92,8 +96,8 @@ def split_fasta(input_path: Path, output_dir: Path) -> int:
         with map_path.open("x", encoding="utf-8", newline="") as target:
             created.append(map_path)
             writer = csv.writer(target)
-            writer.writerow(["ID", "Taxon", "R1", "R2", "Assembly"])
-            writer.writerows([record.identifier, record.taxon, "", "", record.identifier + ".fasta"]
+            writer.writerow(["ID", "Taxon", "R1", "R2", "Assembly", "Topology"])
+            writer.writerows([record.identifier, record.taxon, "", "", record.identifier + ".fasta", "circular"]
                              for record in records)
     except OSError:
         for path in reversed(created):
